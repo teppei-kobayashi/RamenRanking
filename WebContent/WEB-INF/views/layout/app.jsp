@@ -14,12 +14,17 @@
                 <div id="header_menu">
                     <h1><a href="<c:url value='/' />">ラーメンランキング（仮）</a></h1>
                     <a href="<c:url value='/' />">投稿</a>
-                    <c:if test="${sessionScope.login_employee != null}">
-                        <div id="employee_name">
-                            <c:out value="${sessionScope.login_employee.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
-                            <a href="<c:url value='/logout' />">ログアウト</a>
-                        </div>
-                    </c:if>
+                </div>
+                <div id="login_user_name">
+                    <c:if test="${sessionScope.login_status = !null}" var="flg" />
+                        <c:if test="${flg}">
+                                ゲスト さん&nbsp;&nbsp;&nbsp;
+                                <a href="<c:url value='/login' />">ログイン</a>
+                        </c:if>
+                        <c:if test="${!flg}">
+                                <c:out value="${sessionScope.login_status.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
+                                <a href="<c:url value='/logout' />">ログアウト</a>
+                        </c:if>
                 </div>
             </div>
             <div id="content">
