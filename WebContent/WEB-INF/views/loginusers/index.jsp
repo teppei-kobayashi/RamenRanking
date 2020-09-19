@@ -47,7 +47,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/loginusers/new' />">ユーザーの登録</a></p>
+
 
     </c:param>
 </c:import>
