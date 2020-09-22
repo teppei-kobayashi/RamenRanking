@@ -12,7 +12,7 @@ public class LoginUserValidator {
     public static List<String> validate(LoginUser l, Boolean mail_address_duplicate_check_flag, Boolean password_check_flag) {
         List<String> errors = new ArrayList<String>();
 
-        String mail_address_error = _validateMail_address(l.getMail_Address(), mail_address_duplicate_check_flag);
+        String mail_address_error = _validateMail_Address(l.getMail_address(), mail_address_duplicate_check_flag);
         if(!mail_address_error.equals("")) {
             errors.add(mail_address_error);
         }
@@ -31,7 +31,7 @@ public class LoginUserValidator {
     }
 
     //メールアドレス
-    private static String _validateMail_address(String mail_address, Boolean mail_address_duplicate_check_flag) {
+    private static String _validateMail_Address(String mail_address, Boolean mail_address_duplicate_check_flag) {
         //必須入力チェック
         if(mail_address == null || mail_address.equals("")) {
             return "メールアドレスを入力してください。";
@@ -40,7 +40,7 @@ public class LoginUserValidator {
         // すでに登録されている社員番号との重複チェック
         if(mail_address_duplicate_check_flag) {
             EntityManager em = DBUtil.createEntityManager();
-            long loginusers_count = (long)em.createNamedQuery("checkRegisteredMailaddress", Long.class)
+            long loginusers_count = (long)em.createNamedQuery("checkRegisteredMailAddress", Long.class)
                                            .setParameter("mail_address", mail_address)
                                              .getSingleResult();
             em.close();

@@ -13,7 +13,8 @@
             <div id="header">
                 <div id="header_menu">
                     <h1><a href="<c:url value='/' />">ラーメンランキング（仮）</a></h1>
-                    <a href="<c:url value='/' />">投稿</a>
+                    <a href="<c:url value='/' />">投稿</a>&nbsp;
+                    <a href="<c:url value='/loginusers/index' />">ユーザー一覧</a>
                 </div>
                 <div id="login_user_name">
                     <c:if test="${sessionScope.login_status = !null}" var="flg" />

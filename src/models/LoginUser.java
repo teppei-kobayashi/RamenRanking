@@ -22,12 +22,12 @@ import javax.persistence.Table;
             query = "SELECT COUNT(l) FROM LoginUser AS l"
             ),
     @NamedQuery(
-            name = "checkRegisteredMailaddress",
-            query = "SELECT COUNT(l) FROM LoginUser AS l WHERE l.mail_address = :mailaddress"
+            name = "checkRegisteredMailAddress",
+            query = "SELECT COUNT(l) FROM LoginUser AS l WHERE l.mail_address = :mail_address"
             ),
     @NamedQuery(
-            name = "checkLoginMailaddressAndPassword",
-            query = "SELECT l FROM LoginUser AS l WHERE l.delete_flag = 0 AND l.mail_address = :mailaddress AND l.password = :pass"
+            name = "checkLoginMailAddressAndPassword",
+            query = "SELECT l FROM LoginUser AS l WHERE l.delete_flag = 0 AND l.mail_address = :mail_address AND l.password = :pass"
             )
 })
 @Entity
@@ -66,7 +66,7 @@ public class LoginUser {
         this.id = id;
     }
 
-    public String getMail_Address() {
+    public String getMail_address() {
         return mail_address;
     }
 
