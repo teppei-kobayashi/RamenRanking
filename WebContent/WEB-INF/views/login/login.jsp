@@ -15,7 +15,7 @@
         <h2>ログイン</h2>
         <form method="POST" action="<c:url value='/login' />">
             <label for="mail_address">メールアドレス</label><br />
-            <input type="text" name="mail_addres" value="${mail_address}" />
+            <input type="text" name="mail_address" value="${mail_address}" />
             <br /><br />
 
             <label for="password">パスワード</label><br />

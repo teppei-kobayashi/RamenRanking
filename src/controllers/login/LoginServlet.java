@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
             // メールアドレスとパスワードが正しいかチェックする
             try {
-                l = em.createNamedQuery("checkLoginMailaddressAndPassword", LoginUser.class)
+                l = em.createNamedQuery("checkLoginMailAddressAndPassword", LoginUser.class)
                       .setParameter("mail_address", mail_address)
                       .setParameter("pass", password)
                       .getSingleResult();
@@ -98,5 +98,6 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/");
         }
     }
+
 
 }
