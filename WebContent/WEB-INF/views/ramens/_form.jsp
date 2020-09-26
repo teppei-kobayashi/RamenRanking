@@ -15,7 +15,7 @@
 <input type="text" name="name" value="${ramen.name}" />
 <br /><br />
 
-<label for="title">種類</label><br />
+<label for="type">種類</label><br />
 <input type="text" name="type" value="${ramen.type}" />
 <br /><br />
 
