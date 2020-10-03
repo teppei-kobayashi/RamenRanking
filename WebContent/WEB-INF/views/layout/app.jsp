@@ -13,7 +13,7 @@
             <div id="header">
                 <div id="header_menu">
                     <h1><a href="<c:url value='/' />">ラーメンランキング（仮）</a></h1>
-                    <a href="<c:url value='/' />">投稿</a>&nbsp;
+                    <a href="<c:url value='/rankings/index' />">投稿</a>&nbsp;
                     <a href="<c:url value='/loginusers/index' />">ユーザー一覧</a>
                     <a href="<c:url value='/ramens/index' />">ラーメン一覧</a>
                 </div>
