@@ -30,11 +30,11 @@ public class Ranking {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "loginuser_id", nullable = false)
+    @JoinColumn(name = "loginuser_id")
     private LoginUser loginuser;
 
     @ManyToOne
-    @JoinColumn(name = "ramen_id", nullable = false)
+    @JoinColumn(name = "ramen_id")
     private Ramen ramen;
 
     @Column(name = "product", nullable = false)

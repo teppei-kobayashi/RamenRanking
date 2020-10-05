@@ -20,8 +20,8 @@
                 </tr>
                 <c:forEach var="ranking" items="${rankings}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="ramen_name"><c:out value="${ranking.ramen.name}" /></td>
-                        <td class="ranking_product">{ranking.product}</td>
+                        <td class="ramen_name"><c:out value="${ranking.id}" /></td>
+                        <td class="ranking_product">${ranking.product}</td>
                         <td class="ranking_price">${ranking.price}</td>
                         <td class="ranking_place">${ranking.place}</td>
                         <td class="ranking_action"><a href="<c:url value='/rankings/show?id=${ranking.id}' />">得点をつける</a></td>
