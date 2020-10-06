@@ -33,7 +33,7 @@
                         </tr>
                     </tbody>
                 </table>
-                    <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
+                    <p><a href="<c:url value="/rankings/edit?id=${ranking.id}" />">この日報を編集する</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
