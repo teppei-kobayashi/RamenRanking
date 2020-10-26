@@ -1,4 +1,4 @@
-package controllers.toppage;
+package contorollers.ranking;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.RankingAvg;
+import models.Ramen;
 import utils.DBUtil;
-import utils.RankingDAO;;
+
 /**
- * Servlet implementation class TopPageIndexServlet
+ * Servlet implementation class RankingsIndex2Servlet
  */
-@WebServlet("/index.html")
-public class TopPageIndexServlet extends HttpServlet {
+@WebServlet("/rankings/index2")
+public class RankingsIndex2Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TopPageIndexServlet() {
+    public RankingsIndex2Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,35 +41,25 @@ public class TopPageIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
+        List<Ramen> ramens = em.createNamedQuery("getAllRamens", Ramen.class)
+                                  .setFirstResult(15 * (page - 1))
+                                  .setMaxResults(15)
+                                  .getResultList();
 
-        RankingDAO dao = new RankingDAO();
-
-        List<RankingAvg> list = dao.getRankingAvgs();
-
-        // 取得したListオブジェクトを順番に取り出し、出力
-        System.out.println("これから結果を表示します");
-        for(RankingAvg item : list){
-                item.getRamen_name();
-                item.getPoint();
-                System.out.println("ラーメン:" + item.getRamen_name());
-                System.out.println("ポイント" + item.getPoint());
-        }
-        long rankings_count = (long)em.createNamedQuery("getRankingsCount", Long.class)
-                .getSingleResult();
+        long ramens_count = (long)em.createNamedQuery("getRamensCount", Long.class)
+                                     .getSingleResult();
 
         em.close();
 
-        request.setAttribute("rankings", list);
-        request.setAttribute("rankings_count", rankings_count);
+        request.setAttribute("ramens", ramens);
+        request.setAttribute("ramens_count", ramens_count);
         request.setAttribute("page", page);
-
-
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/topPage/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/rankings/index2.jsp");
         rd.forward(request, response);
     }
 

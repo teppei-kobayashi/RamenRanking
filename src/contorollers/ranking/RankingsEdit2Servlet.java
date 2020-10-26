@@ -14,16 +14,16 @@ import models.Ranking;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class RankingsEditServlet
+ * Servlet implementation class RankingsEdit2Servlet
  */
-@WebServlet("/rankings/edit")
-public class RankingsEditServlet extends HttpServlet {
+@WebServlet("/rankings/edit2")
+public class RankingsEdit2Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RankingsEditServlet() {
+    public RankingsEdit2Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,12 +38,13 @@ public class RankingsEditServlet extends HttpServlet {
 
         em.close();
 
+        request.setAttribute("ramen", l.getRamenId());
         request.setAttribute("ranking", l);
         request.setAttribute("_token", request.getSession().getId());
         request.getSession().setAttribute("ranking_id", l.getId());
 
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/rankings/edit.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/rankings/edit2.jsp");
         rd.forward(request, response);
     }
 

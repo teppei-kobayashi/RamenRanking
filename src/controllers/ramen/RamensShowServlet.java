@@ -40,6 +40,7 @@ public class RamensShowServlet extends HttpServlet {
 
         request.setAttribute("ramen", r);
         request.setAttribute("_token", request.getSession().getId());
+        request.getSession().setAttribute("ramen_id", r.getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/ramens/show.jsp");
         rd.forward(request, response);

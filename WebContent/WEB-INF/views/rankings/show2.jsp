@@ -29,14 +29,19 @@
                         </tr>
                     </tbody>
                 </table>
-                <p><a href="<c:url value="/ramens/edit?id=${ramen.id}" />">このラーメンを編集する</a></p>
-                <p><a href="<c:url value="/ramens/edit2?id=${ramen.id}" />">このラーメンを見る</a></p>
+                <c:if test="${ranking.point_flag == 1}" >
+                    <p><a href="<c:url value="/rankings/edit2?id=${ranking.id}" />">このラーメンの点数を付け直す</a></p>
+                </c:if>
+                <c:if test="${ranking.point_flag != 1}" >
+                    <p><a href="<c:url value="/rankings/new2" />">このラーメンに点数をつける</a></p>
+                </c:if>
+
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value="/ramens/index" />">一覧に戻る</a></p>
+        <p><a href="<c:url value="/rankings/index2" />">一覧に戻る</a></p>
     </c:param>
 </c:import>

@@ -12,21 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.LoginUser;
+import models.Ramen;
 import models.Ranking;
 import models.validators.RankingValidator;
 import utils.DBUtil;
-
 /**
- * Servlet implementation class RankingsCreateServlet
+ * Servlet implementation class RankingsCreate2Servlet
  */
-@WebServlet("/rankings/create")
-public class RankingsCreateServlet extends HttpServlet {
+@WebServlet("/rankings/create2")
+public class RankingsCreate2Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RankingsCreateServlet() {
+    public RankingsCreate2Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,10 +40,12 @@ public class RankingsCreateServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
 
             Ranking l = new Ranking();
+            Ramen r = em.find(Ramen.class, (Integer)(request.getSession().getAttribute("ramen_id")));
 
             l.setLoginUser((LoginUser)request.getSession().getAttribute("login_status"));
-
+            l.setRamenId(r);
             l.setPoint(Integer.valueOf(request.getParameter("point")));
+            l.setPoint_flag(1);
 
 
             List<String> errors = RankingValidator.validate(l);
@@ -54,7 +56,7 @@ public class RankingsCreateServlet extends HttpServlet {
                 request.setAttribute("ranking", l);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/rankings/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/rankings/new2.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
@@ -63,7 +65,7 @@ public class RankingsCreateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
 
-                response.sendRedirect(request.getContextPath() + "/rankings/index");
+                response.sendRedirect(request.getContextPath() + "/rankings/index2");
             }
         }
     }

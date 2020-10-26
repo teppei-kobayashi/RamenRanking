@@ -20,6 +20,10 @@ import javax.persistence.Table;
             name = "getRamensCount",
             query = "SELECT COUNT(r) FROM Ramen AS r"
             ),
+    @NamedQuery(
+            name = "getRamensId",
+            query = "SELECT r.id FROM Ramen AS r"
+            )
 })
 @Entity
 public class Ramen {

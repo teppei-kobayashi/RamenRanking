@@ -34,11 +34,11 @@ public class RankingsShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Ranking r = em.find(Ranking.class, Integer.parseInt(request.getParameter("id")));
+        Ranking l = em.find(Ranking.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
-        request.setAttribute("ranking", r);
+        request.setAttribute("ranking", l);
         request.setAttribute("_token", request.getSession().getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/rankings/show.jsp");

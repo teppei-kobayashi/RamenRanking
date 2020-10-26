@@ -11,18 +11,27 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "rankings")
 @NamedQueries({
     @NamedQuery(
             name = "getAllRankings",
-            query = "SELECT r FROM Ranking AS r ORDER BY r.id DESC"
+            query = "SELECT a FROM Ranking As a ORDER BY a.id DESC"
             ),
     @NamedQuery(
             name = "getRankingsCount",
-            query = "SELECT COUNT(r) FROM Ranking AS r"
+            query = "SELECT COUNT(a) FROM Ranking AS a"
             ),
+    @NamedQuery(
+            name = "getRankingsRamen",
+            query = "SELECT a FROM Ranking AS a WHERE a.loginuser = :login_status AND a.ramen = :ramen_id"
+            ),
+    @NamedQuery(
+            name = "getRankings",
+            query = "SELECT a  FROM Ranking AS a "
+            )
 })
-@Entity
+
 public class Ranking {
     @Id
     @Column(name = "id")
@@ -37,14 +46,11 @@ public class Ranking {
     @JoinColumn(name = "ramen_id")
     private Ramen ramen;
 
-    @Column(name = "product", nullable = false)
-    private Integer product;
+    @Column(name = "point", nullable = false)
+    private Integer point;
 
-    @Column(name = "price", nullable = false)
-    private Integer price;
-
-    @Column(name = "place", nullable = false)
-    private Integer place;
+    @Column(name = "point_flag", nullable = false)
+    private Integer point_flag;
 
 
     public Integer getId() {
@@ -72,29 +78,21 @@ public class Ranking {
     }
 
 
-    public Integer getProduct() {
-        return product;
+    public Integer getPoint() {
+        return point;
     }
 
-    public void setProduct(Integer product) {
-        this.product = product;
+    public void setPoint(Integer point) {
+        this.point = point;
     }
 
 
-    public Integer getPrice() {
-        return price;
+    public Integer getPoint_flag() {
+        return point_flag;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Integer getPlace() {
-        return place;
-    }
-
-    public void setPlace(Integer place) {
-        this.place = place;
+    public void setPoint_flag(Integer point_flag) {
+        this.point_flag = point_flag;
     }
 
 

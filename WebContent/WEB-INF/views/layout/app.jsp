@@ -13,9 +13,13 @@
             <div id="header">
                 <div id="header_menu">
                     <h1><a href="<c:url value='/' />">ラーメンランキング（仮）</a></h1>
-                    <a href="<c:url value='/rankings/index' />">投稿</a>&nbsp;
-                    <a href="<c:url value='/loginusers/index' />">ユーザー一覧</a>
-                    <a href="<c:url value='/ramens/index' />">ラーメン一覧</a>
+                    <c:if test="${sessionScope.login_status != null}" >
+                         <a href="<c:url value='/rankings/index2' />">投稿</a>&nbsp;
+                         <c:if test="${sessionScope.login_status.admin_flag == 1}">
+                            <a href="<c:url value='/loginusers/index' />">ユーザー一覧</a>
+                            <a href="<c:url value='/ramens/index' />">ラーメン一覧</a>
+                        </c:if>
+                    </c:if>
                 </div>
                 <div id="login_user_name">
                     <c:if test="${sessionScope.login_status == null}" >
